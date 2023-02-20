@@ -1,5 +1,5 @@
 function find_neighbors(graph, i::Integer)
     neighbors = copy(graph[i])
-    sort(push!(neighbors, i))
+    sort!(append!(neighbors, i)) # the node is connected to itself
     return(neighbors)
 end
