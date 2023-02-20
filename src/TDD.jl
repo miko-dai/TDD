@@ -1,4 +1,4 @@
 module TDD
-export find_neighbors
+export direct_neighbors
 include("functions.jl")
 end

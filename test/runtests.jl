@@ -9,5 +9,6 @@ testgraph = [
           [4]]        # ", node 5
 
 @testset "TDD.jl" begin
-    @test find_neighbors(testgraph, 1) == [1,2,3]
+    @test direct_neighbors(testgraph, 1) == [1,2,3]
+    @test reachable_nodes(testgraph, 2) == [1,2,3]
 end
