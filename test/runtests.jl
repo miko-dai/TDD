@@ -12,4 +12,5 @@ testgraph = [
 @testset "TDD.jl" begin
     @test direct_neighbors(testgraph, 1) == [1,2,3]
     @test reachable_nodes(testgraph, 2) == [1,2,3]
+    @test find_components(testgraph) == [[1,2,3],[4,5]]
 end
