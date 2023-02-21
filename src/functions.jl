@@ -13,8 +13,8 @@ function reachable_nodes(graph, i::Integer)
     while reachable != neighbors
         reachable = copy(neighbors)
         for n in reachable
-            push!(neighbors, direct_neighbors(graph, n))
+            union!(neighbors, Set(direct_neighbors(graph, n)))
         end
     end
-    return collect(reachable)
+    return sort!(collect(reachable))
 end
