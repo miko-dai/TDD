@@ -1,4 +1,4 @@
-function direct_neighbors(graph, i::Integer)
+function direct_neighbors(graph::AbstractVector, i::Integer)
     """
     find and return the direct neighbors from a starting node i in the graph provided
     """
@@ -7,7 +7,11 @@ function direct_neighbors(graph, i::Integer)
     return(neighbors)
 end
 
-function reachable_nodes(graph, i::Integer)
+function direct_neighbors(adjmatrix::AbstractMatrix, i::Integer)
+    return(findall(adjmatrix[i,:]))
+end
+
+function reachable_nodes(graph::AbstractVector, i::Integer)
     neighbors = Set(direct_neighbors(graph, i))
     reachable = Set()
     while reachable != neighbors
@@ -19,7 +23,7 @@ function reachable_nodes(graph, i::Integer)
     return sort!(collect(reachable))
 end
 
-function find_components(graph)
+function find_components(graph::AbstractVector)
     nodes = 1:length(graph)
     components = [reachable_nodes(graph, n) for n in nodes]
     return unique(components)
