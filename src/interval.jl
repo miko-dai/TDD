@@ -30,3 +30,10 @@ function Base.:(⊆)(x::Interval, iv::Interval)
         return(x.l >= iv.l && x.r <= iv.r)
     end
 end
+
+function Base.:(∩)(iva::Interval, ivb::Interval) 
+    if iva.l > ivb.l
+        (ivb, iva) = (iva, ivb)
+    end
+    return(Interval(ivb.l, iva.r))
+end
