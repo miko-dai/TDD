@@ -28,7 +28,3 @@ function find_components(input)
     components = [reachable_nodes(input, n) for n in nodes]
     return unique(components)
 end
-
-function find_components()
-    
-end
