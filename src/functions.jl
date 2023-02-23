@@ -22,5 +22,5 @@ end
 function find_components(graph)
     nodes = 1:length(graph)
     components = [reachable_nodes(graph, n) for n in nodes]
-    return components
+    return unique(components)
 end
