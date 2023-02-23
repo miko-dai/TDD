@@ -11,7 +11,7 @@ iv = Interval(3, 5)
     @test isempty(iv) == false
     @test isempty(Interval(3,2)) == true
     @test iv ⊆ iv
-    @test [3, 3.5, 4] ⊆ iv
-    @test [2, 3] ⊈ iv
+    @test Set([3, 3.5, 4]) ⊆ iv
+    @test Set([2, 3]) ⊈ iv
     @test Interval(3,2) ⊆ iv
 end
