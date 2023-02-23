@@ -11,20 +11,24 @@ function direct_neighbors(adjmatrix::AbstractMatrix, i::Integer)
     return(findall(adjmatrix[i,:]))
 end
 
-function reachable_nodes(graph::AbstractVector, i::Integer)
-    neighbors = Set(direct_neighbors(graph, i))
+function reachable_nodes(input, i::Integer)
+    neighbors = Set(direct_neighbors(input, i))
     reachable = Set()
     while reachable != neighbors
         reachable = copy(neighbors)
         for n in reachable
-            union!(neighbors, Set(direct_neighbors(graph, n)))
+            union!(neighbors, Set(direct_neighbors(input, n)))
         end
     end
     return sort!(collect(reachable))
 end
 
-function find_components(graph::AbstractVector)
-    nodes = 1:length(graph)
-    components = [reachable_nodes(graph, n) for n in nodes]
+function find_components(input)
+    nodes = 1:size(input)[1]
+    components = [reachable_nodes(input, n) for n in nodes]
     return unique(components)
+end
+
+function find_components()
+    
 end
