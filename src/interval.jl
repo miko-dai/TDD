@@ -3,6 +3,8 @@ struct Interval
     r::Real # implicitly l <= r
 end
 
+Base.show(io::IO, ::MIME"text/plain", iv::Interval) = print(io, '\u301a', iv.l, ", ", iv.r, '\u301b')
+
 function Base.minimum(iv::Interval)
     iv.l
 end
