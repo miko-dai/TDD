@@ -1,12 +1,18 @@
 struct Interval
     a::Real
-    b::Real
+    b::Real # implicitly a <= b
 end
 
 function Base.minimum(iv::Interval)
-    minimum([iv.a, iv.b])
+    iv.a
 end
 
 function Base.maximum(iv::Interval)
-    maximum([iv.a, iv.b])
+    iv.b
 end
+
+function Base.:(∈)(x::Real, iv::Interval)
+    x <= iv.b && x >= iv.a
+end
+
+function 
